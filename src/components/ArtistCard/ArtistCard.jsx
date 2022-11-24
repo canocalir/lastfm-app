@@ -39,7 +39,7 @@ const ArtistCard = ({ artist }) => {
 
   return (
     <ArtistCardContainer
-      border={!darkMode ? "2px solid #fff" : "2px solid #121620"}
+      border={!darkMode ? "2px solid #fff" : "2px solid grey"}
     >
       <ArtistImageContainer>
         <ArtistCardImage src={artist.image[2]["#text"]} alt="" />

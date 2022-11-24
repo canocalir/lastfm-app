@@ -7,9 +7,13 @@ import { TopArtistListContainer } from "./TopArtistList.styled";
 
 const TopArtistList = () => {
   const fetchTopArtists = async ({ pageParam = 1 }) => {
-    const url = `${process.env.REACT_APP_LASTFM_BASE_URL}/?method=chart.gettopartists&api_key=${process.env.REACT_APP_LASTFM_API_KEY}&format=json&page=${pageParam}&limit=5`;
-    const res = await fetch(url);
-    return res.json();
+    try {
+      const url = `${process.env.REACT_APP_LASTFM_BASE_URL}/?method=chart.gettopartists&api_key=${process.env.REACT_APP_LASTFM_API_KEY}&format=json&page=${pageParam}&limit=5`;
+      const res = await fetch(url);
+      return res.json();
+    } catch (error) {
+      console.log(error)
+    }
   };
 
   const {
@@ -62,7 +66,7 @@ const TopArtistList = () => {
         )}
       </TopArtistListContainer>
       <div>
-        {isFetching && !isFetchingNextPage ? "Fetching Artists..." : null}
+        {isFetching && !isFetchingNextPage ? <LoadingIndicator /> : null}
       </div>
     </>
   );

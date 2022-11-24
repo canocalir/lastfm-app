@@ -5,4 +5,5 @@ export const TopArtistListContainer = styled.div`
     flex-direction: column;
     align-items: center;
     gap: 2rem;
+    padding-bottom: 4rem;
 `
