@@ -1,3 +1,5 @@
+import { useSelector } from "react-redux";
+import { selectTheme } from "../../features/themeSlice";
 import {
   ArtistDetailsDivider,
   ArtistDetailsHeading,
@@ -6,12 +8,13 @@ import {
 } from "./ArtistDetailsTab.styled";
 
 const ArtistDetailsTab = ({ heading, data }) => {
+  const { darkMode } = useSelector(selectTheme);
   const conditionalRender =
     heading === "Top Albums" ? (
       <>
         {data?.album?.map((album, index) => {
           return (
-            <ArtistDetailsCard key={index}>
+            <ArtistDetailsCard border={!darkMode ? "2px solid #fff" : "2px solid grey"} key={index}>
               <DetailsImageSquare
                 src={
                   !album?.image[2]?.["#text"]
@@ -34,7 +37,10 @@ const ArtistDetailsTab = ({ heading, data }) => {
       <>
         {data?.track?.map((track, index) => {
           return (
-            <ArtistDetailsCard key={index}>
+            <ArtistDetailsCard
+              border={!darkMode ? "2px solid #fff" : "2px solid grey"}
+              key={index}
+            >
               <DetailsImageSquare
                 src={
                   !track?.image[2]?.["#text"]

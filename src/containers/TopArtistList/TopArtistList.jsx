@@ -23,28 +23,29 @@ const TopArtistList = () => {
     isFetchingNextPage,
   } = useInfiniteQuery(["topartists"], fetchTopArtists, {
     getNextPageParam: (lastPage) => {
-      return Number(lastPage?.artists["@attr"].page + 1);
+      return Number(lastPage?.artists?.["@attr"].page + 1);
     },
   });
 
   useEffect(() => {
     let fetching = false;
     const handleScroll = async (e) => {
-      const {scrollHeight, scrollTop, clientHeight} = e.target.scrollingElement;
-      if(!fetching && scrollHeight - scrollTop <= clientHeight * 1.2) {
-        fetching = true
-        if(hasNextPage) await fetchNextPage()
-        fetching = false
+      const { scrollHeight, scrollTop, clientHeight } =
+        e.target.scrollingElement;
+      if (!fetching && scrollHeight - scrollTop <= clientHeight * 1.2) {
+        fetching = true;
+        if (hasNextPage) await fetchNextPage();
+        fetching = false;
       }
-    }
-    document.addEventListener('scroll', handleScroll)
+    };
+    document.addEventListener("scroll", handleScroll);
     return () => {
-      document.removeEventListener('scroll', handleScroll)
-    }
-  }, [fetchNextPage, hasNextPage])
+      document.removeEventListener("scroll", handleScroll);
+    };
+  }, [fetchNextPage, hasNextPage]);
 
   if (isLoading) {
-    return <LoadingIndicator/>
+    return <LoadingIndicator />;
   }
 
   if (isError) {
@@ -60,7 +61,9 @@ const TopArtistList = () => {
           ))
         )}
       </TopArtistListContainer>
-      <div>{isFetching && !isFetchingNextPage ? "Fetching Artists..." : null}</div>
+      <div>
+        {isFetching && !isFetchingNextPage ? "Fetching Artists..." : null}
+      </div>
     </>
   );
 };

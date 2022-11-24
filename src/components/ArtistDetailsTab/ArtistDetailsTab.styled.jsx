@@ -9,7 +9,10 @@ export const ArtistDetailsHeading = styled.h2`
 `
 export const ArtistDetailsCard = styled.div`
     box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
-    display: flex;;
+    display: flex;
+    align-items:center;
+    border: ${props => props.border};
+    border-radius: 1rem;
 `
 
 export const ArtistDetailsTabContainer = styled.div`
@@ -21,4 +24,6 @@ export const ArtistDetailsTabContainer = styled.div`
 
 export const DetailsImageSquare = styled.img`
     box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px, rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+    border-top-left-radius: 0.8rem;
+    border-bottom-left-radius: 0.8rem;
 `

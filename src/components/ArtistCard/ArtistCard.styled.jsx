@@ -10,10 +10,12 @@ export const ArtistCardContainer = styled.div`
   border-radius: 1rem;
   flex-wrap: wrap;
   padding: 1rem;
+  border: ${(props) => props.border};
 `;
 
 export const ArtistCardImage = styled.img`
   height: 10rem;
+  border-radius: 1rem;
 `;
 
 export const ArtistImageContainer = styled.div`
@@ -31,25 +33,25 @@ export const ArtistDetailsContainer = styled.div`
 `;
 
 export const ArtistDetailsButton = styled.button`
-    background-color: #fb0;
-    border-radius: 0.3rem;
-    color: #222;
-    border: none;
-    height: 3rem;
-    width: 10rem;
-    font-weight: 600;
-    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    &:hover{
-        background-color: #c99403;
-        cursor: pointer;
-        transition: 200ms ease-in;
-    }
-`
+  background-color: #fb0;
+  border-radius: 0.3rem;
+  color: #222;
+  border: none;
+  height: 3rem;
+  width: 10rem;
+  font-weight: 600;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  &:hover {
+    background-color: #c99403;
+    cursor: pointer;
+    transition: 200ms ease-in;
+  }
+`;
 
 export const ArtistDetailsSpan = styled.span`
-    font-weight: 600;
-`
+  font-weight: 600;
+`;
 
 export const ArtistNameParagraph = styled.p`
-    font-size: 2rem;
-`
+  font-size: 2rem;
+`;

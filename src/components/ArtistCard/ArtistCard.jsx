@@ -1,9 +1,7 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import {
-  setAlbumsData,
-  setTracksData,
-} from "../../features/detailSlice";
+import { setAlbumsData, setTracksData } from "../../features/detailSlice";
+import { selectTheme } from "../../features/themeSlice";
 import {
   ArtistCardContainer,
   ArtistCardImage,
@@ -17,6 +15,7 @@ import {
 
 const ArtistCard = ({ artist }) => {
   const dispatch = useDispatch();
+  const { darkMode } = useSelector(selectTheme);
   const fetchArtistTopAlbums = async () => {
     const url = `${process.env.REACT_APP_LASTFM_BASE_URL}/?method=artist.gettopalbums&artist=${artist?.name}&api_key=${process.env.REACT_APP_LASTFM_API_KEY}&format=json`;
     const res = await fetch(url);
@@ -39,7 +38,9 @@ const ArtistCard = ({ artist }) => {
   };
 
   return (
-    <ArtistCardContainer>
+    <ArtistCardContainer
+      border={!darkMode ? "2px solid #fff" : "2px solid #121620"}
+    >
       <ArtistImageContainer>
         <ArtistCardImage src={artist.image[2]["#text"]} alt="" />
       </ArtistImageContainer>
