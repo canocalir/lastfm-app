@@ -6,13 +6,15 @@ import { ArtistDetailsTabContainer } from "../../components/ArtistDetailsTab/Art
 
 const ArtistDetailsList = () => {
   const data = useSelector(selectDetails)
+  const albumData = JSON.parse(localStorage.getItem('albumdetails'))
+  const trackData = JSON.parse(localStorage.getItem('trackdetails'))
   return (
     <ArtistDetailsMainContainer>
       <ArtistDetailsTabContainer>
-      <ArtistDetailsTab data={data?.albumsData} heading={'Top Albums'}/>
+      <ArtistDetailsTab data={!albumData ? data?.albumsData : albumData?.topalbums} heading={'Top Albums'}/>
       </ArtistDetailsTabContainer>
       <ArtistDetailsTabContainer>
-      <ArtistDetailsTab data={data?.tracksData} heading={'Top Tracks'}/>
+      <ArtistDetailsTab data={!trackData ? data?.tracksData : trackData?.toptracks} heading={'Top Tracks'}/>
       </ArtistDetailsTabContainer>
     </ArtistDetailsMainContainer>
   )

@@ -1,6 +1,11 @@
-import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { setAlbumsData, setTracksData } from "../../features/detailSlice";
+import {
+  selectDetails,
+  setAlbumsData,
+  setTracksData,
+} from "../../features/detailSlice";
 import {
   ArtistCardContainer,
   ArtistCardImage,
@@ -14,12 +19,12 @@ import {
 
 const ArtistCard = ({ artist }) => {
   const dispatch = useDispatch();
-
   const fetchArtistTopAlbums = async () => {
     const url = `${process.env.REACT_APP_LASTFM_BASE_URL}/?method=artist.gettopalbums&artist=${artist?.name}&api_key=${process.env.REACT_APP_LASTFM_API_KEY}&format=json`;
     const res = await fetch(url);
     const data = await res.json();
     dispatch(setAlbumsData(data));
+    localStorage.setItem("albumdetails", JSON.stringify(data));
   };
 
   const fetchArtistTopTracks = async () => {
@@ -27,6 +32,7 @@ const ArtistCard = ({ artist }) => {
     const res = await fetch(url);
     const data = await res.json();
     dispatch(setTracksData(data));
+    localStorage.setItem("trackdetails", JSON.stringify(data));
   };
 
   const detailsFetchHandler = () => {

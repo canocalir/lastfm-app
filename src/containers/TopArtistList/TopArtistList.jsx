@@ -1,15 +1,17 @@
+import { useEffect } from "react";
 import { useInfiniteQuery } from "react-query";
 
 import ArtistCard from "../../components/ArtistCard/ArtistCard";
+import LoadingIndicator from "../../components/LoadingIndicator/LoadingIndicator";
 import { TopArtistListContainer } from "./TopArtistList.styled";
 
-const fetchTopArtists = async ({ pageParam = 1 }) => {
-  const url = `${process.env.REACT_APP_LASTFM_BASE_URL}/?method=chart.gettopartists&api_key=${process.env.REACT_APP_LASTFM_API_KEY}&format=json&page=${pageParam}&limit=5`;
-  const res = await fetch(url);
-  return res.json();
-};
-
 const TopArtistList = () => {
+  const fetchTopArtists = async ({ pageParam = 1 }) => {
+    const url = `${process.env.REACT_APP_LASTFM_BASE_URL}/?method=chart.gettopartists&api_key=${process.env.REACT_APP_LASTFM_API_KEY}&format=json&page=${pageParam}&limit=5`;
+    const res = await fetch(url);
+    return res.json();
+  };
+
   const {
     isLoading,
     isError,
@@ -17,6 +19,7 @@ const TopArtistList = () => {
     data,
     fetchNextPage,
     isFetching,
+    hasNextPage,
     isFetchingNextPage,
   } = useInfiniteQuery(["topartists"], fetchTopArtists, {
     getNextPageParam: (lastPage) => {
@@ -24,8 +27,24 @@ const TopArtistList = () => {
     },
   });
 
+  useEffect(() => {
+    let fetching = false;
+    const handleScroll = async (e) => {
+      const {scrollHeight, scrollTop, clientHeight} = e.target.scrollingElement;
+      if(!fetching && scrollHeight - scrollTop <= clientHeight * 1.2) {
+        fetching = true
+        if(hasNextPage) await fetchNextPage()
+        fetching = false
+      }
+    }
+    document.addEventListener('scroll', handleScroll)
+    return () => {
+      document.removeEventListener('scroll', handleScroll)
+    }
+  }, [fetchNextPage, hasNextPage])
+
   if (isLoading) {
-    return <h2>Loading...</h2>;
+    return <LoadingIndicator/>
   }
 
   if (isError) {
@@ -41,10 +60,7 @@ const TopArtistList = () => {
           ))
         )}
       </TopArtistListContainer>
-      <div className="btn-container">
-        <button onClick={fetchNextPage}>Load More</button>
-      </div>
-      <div>{isFetching && !isFetchingNextPage ? "Fetching..." : null}</div>
+      <div>{isFetching && !isFetchingNextPage ? "Fetching Artists..." : null}</div>
     </>
   );
 };
