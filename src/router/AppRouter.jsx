@@ -1,22 +1,29 @@
+//Redux
 import { useSelector } from "react-redux";
+
+//React Router
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { ThemeProvider } from "styled-components";
+import Home from "../pages/Home";
+
+//Redux
 import { selectTheme } from "../features/themeSlice";
 import ArtistDetail from "../pages/ArtistDetail";
-import Home from "../pages/Home";
+
+//Styled Components
+import { ThemeProvider } from "styled-components";
 import { darkTheme, GlobalStyles, lightTheme } from "../styles/theme";
 
 const AppRouter = () => {
-  const {darkMode} = useSelector(selectTheme)
+  const { darkMode } = useSelector(selectTheme);
   return (
     <ThemeProvider theme={!darkMode ? darkTheme : lightTheme}>
       <GlobalStyles />
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/artist/:id" element={<ArtistDetail />} />
-      </Routes>
-    </BrowserRouter>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/artist/:id" element={<ArtistDetail />} />
+        </Routes>
+      </BrowserRouter>
     </ThemeProvider>
   );
 };

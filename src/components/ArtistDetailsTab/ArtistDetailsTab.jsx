@@ -1,5 +1,8 @@
+//Redux
 import { useSelector } from "react-redux";
 import { selectTheme } from "../../features/themeSlice";
+
+//Styled Components
 import {
   ArtistDetailsDivider,
   ArtistDetailsHeading,
@@ -10,7 +13,11 @@ import {
   CounterText,
 } from "./ArtistDetailsTab.styled";
 
+//PropTypes
+import PropTypes from "prop-types";
+
 const ArtistDetailsTab = ({ heading, data }) => {
+  
   const { darkMode } = useSelector(selectTheme);
 
   const conditionalRender =
@@ -84,7 +91,7 @@ const ArtistDetailsTab = ({ heading, data }) => {
         })}
       </>
     );
-  console.log(data);
+  
   return (
     <>
       <ArtistDetailsHeading>{heading}</ArtistDetailsHeading>
@@ -95,3 +102,42 @@ const ArtistDetailsTab = ({ heading, data }) => {
 };
 
 export default ArtistDetailsTab;
+
+//Prop Types
+
+ArtistDetailsTab.propTypes = {
+  heading: PropTypes.string,
+  data: PropTypes.shape({
+    album: PropTypes.arrayOf(
+      PropTypes.shape({
+        artist: PropTypes.shape({
+          name: PropTypes.string,
+          playcount: PropTypes.number,
+          image: PropTypes.arrayOf(
+            PropTypes.shape({
+              2: PropTypes.shape({
+                "#text": PropTypes.string,
+              }),
+            })
+          ),
+        }),
+      })
+    ),
+    track: PropTypes.arrayOf(
+      PropTypes.shape({
+        artist: PropTypes.shape({
+          name: PropTypes.string,
+          playcount: PropTypes.string,
+          listeners: PropTypes.string,
+          image: PropTypes.arrayOf(
+            PropTypes.shape({
+              2: PropTypes.shape({
+                "#text": PropTypes.string,
+              }),
+            })
+          ),
+        }),
+      })
+    ),
+  }),
+};

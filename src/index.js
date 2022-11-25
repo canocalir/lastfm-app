@@ -3,18 +3,15 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./containers/Main/App";
 import reportWebVitals from "./reportWebVitals";
-import { QueryClient, QueryClientProvider } from "react-query";
-
-
-const queryClient = new QueryClient()
-
+import { Provider } from "react-redux";
+import { store } from "./app/store";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <App />
-    </QueryClientProvider>
+    <Provider store={store}>
+    <App />
+    </Provider>
   </React.StrictMode>
 );
 
