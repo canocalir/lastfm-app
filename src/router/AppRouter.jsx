@@ -4,7 +4,7 @@ import { ThemeProvider } from "styled-components";
 import { selectTheme } from "../features/themeSlice";
 import ArtistDetail from "../pages/ArtistDetail";
 import Home from "../pages/Home";
-import { darkTheme, GlobalStyles, lightTheme } from "../theme";
+import { darkTheme, GlobalStyles, lightTheme } from "../styles/theme";
 
 const AppRouter = () => {
   const {darkMode} = useSelector(selectTheme)
