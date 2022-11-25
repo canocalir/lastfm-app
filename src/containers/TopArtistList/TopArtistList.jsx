@@ -1,21 +1,11 @@
 import { useEffect } from "react";
-import { useInfiniteQuery } from "react-query";
 
 import ArtistCard from "../../components/ArtistCard/ArtistCard";
 import LoadingIndicator from "../../components/LoadingIndicator/LoadingIndicator";
+import { useFetchTopArtists } from "../../hooks/useFetchTopArtists";
 import { TopArtistListContainer } from "./TopArtistList.styled";
 
 const TopArtistList = () => {
-  const fetchTopArtists = async ({ pageParam = 1 }) => {
-    try {
-      const url = `${process.env.REACT_APP_LASTFM_BASE_URL}/?method=chart.gettopartists&api_key=${process.env.REACT_APP_LASTFM_API_KEY}&format=json&page=${pageParam}&limit=5`;
-      const res = await fetch(url);
-      return res.json();
-    } catch (error) {
-      console.log(error)
-    }
-  };
-
   const {
     isLoading,
     isError,
@@ -25,11 +15,7 @@ const TopArtistList = () => {
     isFetching,
     hasNextPage,
     isFetchingNextPage,
-  } = useInfiniteQuery(["topartists"], fetchTopArtists, {
-    getNextPageParam: (lastPage) => {
-      return Number(lastPage?.artists?.["@attr"].page + 1);
-    },
-  });
+  } = useFetchTopArtists();
 
   useEffect(() => {
     let fetching = false;

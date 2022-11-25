@@ -14,8 +14,11 @@ import {
   ArtistDetailsContainer,
   ArtistDetailsSpan,
   ArtistImageContainer,
-  ArtistNameParagraph
+  ArtistNameParagraph,
 } from "./ArtistCard.styled";
+
+//PropTypes
+import PropTypes from "prop-types";
 
 const ArtistCard = ({ artist }) => {
 
@@ -42,33 +45,31 @@ const ArtistCard = ({ artist }) => {
     fetchArtistTopAlbums();
     fetchArtistTopTracks();
   };
-
-  const conditionalBorder = !darkMode ? "2px solid #fff" : "2px solid grey"
+ 
+  const conditionalBorder = !darkMode ? "2px solid #fff" : "2px solid grey";
 
   return (
-    <ArtistCardContainer
-      border={conditionalBorder}
-    >
+    <ArtistCardContainer border={conditionalBorder}>
       <ArtistImageContainer>
-        <ArtistCardImage src={artist.image[2]["#text"]} alt="" />
+        <ArtistCardImage src={artist?.image[2]["#text"]} alt="" />
       </ArtistImageContainer>
       <ArtistDetailsContainer>
         <h3>Artist</h3>
         <hr />
-        <ArtistNameParagraph>{artist.name}</ArtistNameParagraph>
+        <ArtistNameParagraph>{artist?.name}</ArtistNameParagraph>
       </ArtistDetailsContainer>
       <ArtistDetailsContainer>
         <p>
           <ArtistDetailsSpan>Listeners: </ArtistDetailsSpan>
-          {artist.listeners}
+          {artist?.listeners}
         </p>
         <p>
           <ArtistDetailsSpan>Playcount: </ArtistDetailsSpan>
-          {artist.playcount}
+          {artist?.playcount}
         </p>
       </ArtistDetailsContainer>
-      <Link to={`/artist/${artist.name}`} state={{ data: artist }}>
-        <ArtistDetailsButton onClick={detailsFetchHandler}>
+      <Link to={`/artist/${artist?.name}`} state={{ data: artist }}>
+        <ArtistDetailsButton name="detailsbutton" onClick={detailsFetchHandler}>
           Click For Artist Details
         </ArtistDetailsButton>
       </Link>
@@ -77,3 +78,23 @@ const ArtistCard = ({ artist }) => {
 };
 
 export default ArtistCard;
+
+//Prop Types
+
+ArtistCard.propTypes = {
+  artist: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    listeners: PropTypes.string,
+    playcount: PropTypes.string,
+    image: PropTypes.arrayOf(
+      PropTypes.shape({
+        2: PropTypes.shape({
+          "#text": PropTypes.string,
+        }),
+      })
+    ),
+  }),
+  fetchArtistTopAlbums: PropTypes.func,
+  fetchArtistTopTracks: PropTypes.func,
+  detailsFetchHandler: PropTypes.func
+};
