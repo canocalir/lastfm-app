@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import variables from "../../styles/variables";
 
 export const ArtistCardContainer = styled.div`
   display: flex;
@@ -7,7 +8,7 @@ export const ArtistCardContainer = styled.div`
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   height: 100%;
   width: 70%;
-  border-radius: 1rem;
+  border-radius: ${variables.commonBorderRadius};
   flex-wrap: wrap;
   padding: 1rem;
   border: ${(props) => props.border};
@@ -15,16 +16,11 @@ export const ArtistCardContainer = styled.div`
 
 export const ArtistCardImage = styled.img`
   height: 10rem;
-  border-radius: 1rem;
+  border-radius: ${variables.commonBorderRadius};
 `;
 
 export const ArtistImageContainer = styled.div`
   width: fit-content;
-`;
-
-export const ArtistTitleContainer = styled.div`
-  text-align: center;
-  width: 20rem;
 `;
 
 export const ArtistDetailsContainer = styled.div`
@@ -39,7 +35,7 @@ export const ArtistDetailsButton = styled.button`
   border: none;
   height: 3rem;
   width: 10rem;
-  font-weight: 600;
+  font-weight: ${variables.boldFontWeight};
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   &:hover {
     background-color: #c99403;
@@ -49,7 +45,7 @@ export const ArtistDetailsButton = styled.button`
 `;
 
 export const ArtistDetailsSpan = styled.span`
-  font-weight: 600;
+  font-weight: ${variables.boldFontWeight};
 `;
 
 export const ArtistNameParagraph = styled.p`

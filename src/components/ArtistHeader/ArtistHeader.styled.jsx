@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import variables from "../../styles/variables";
 
 export const ArtistHeaderContainer = styled.div`
   display: flex;
@@ -7,9 +8,8 @@ export const ArtistHeaderContainer = styled.div`
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   gap: 3rem;
   border: ${(props) => props.border};
-  border-radius: 1rem;
+  border-radius: ${variables.commonBorderRadius};
   @media (max-width: 768px) {
-    
     gap: 1rem;
   }
 `;
@@ -35,7 +35,7 @@ export const BackToHomeButton = styled.button`
   height: fit-content;
   border-radius: 0.3rem;
   padding: 0.5rem;
-  font-weight: 600;
+  font-weight: ${variables.boldFontWeight};
   color: #fff;
   background-color: #ba0000;
   border: none;

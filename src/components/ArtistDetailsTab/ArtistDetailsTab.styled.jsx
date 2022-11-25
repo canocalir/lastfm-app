@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import variables from "../../styles/variables";
 
 export const ArtistDetailsDivider = styled.hr`
     width: 100%;
@@ -13,7 +14,7 @@ export const ArtistDetailsCard = styled.div`
     justify-content: space-between;
     align-items:center;
     border: ${props => props.border};
-    border-radius: 1rem;
+    border-radius: ${variables.commonBorderRadius};
     @media (max-width: 768px) {
 	flex-direction: column;
     align-items: center;
@@ -63,7 +64,7 @@ export const PlayCountContainer = styled.div`
 export const CounterText = styled.p`
     font-size: 1.2rem;
     span{
-        font-weight: 600;
+        font-weight: ${variables.boldFontWeight};
         font-size: 0.9rem;
     }
 `

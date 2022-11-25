@@ -1,7 +1,12 @@
-import { useDispatch, useSelector } from "react-redux";
+//React Router
 import { Link } from "react-router-dom";
+
+//Redux
+import { useDispatch, useSelector } from "react-redux";
 import { setAlbumsData, setTracksData } from "../../features/detailSlice";
 import { selectTheme } from "../../features/themeSlice";
+
+//StyledComponents
 import {
   ArtistCardContainer,
   ArtistCardImage,
@@ -9,13 +14,14 @@ import {
   ArtistDetailsContainer,
   ArtistDetailsSpan,
   ArtistImageContainer,
-  ArtistNameParagraph,
-  ArtistTitleContainer,
+  ArtistNameParagraph
 } from "./ArtistCard.styled";
 
 const ArtistCard = ({ artist }) => {
+
   const dispatch = useDispatch();
   const { darkMode } = useSelector(selectTheme);
+
   const fetchArtistTopAlbums = async () => {
     const url = `${process.env.REACT_APP_LASTFM_BASE_URL}/?method=artist.gettopalbums&artist=${artist?.name}&api_key=${process.env.REACT_APP_LASTFM_API_KEY}&format=json`;
     const res = await fetch(url);
@@ -37,18 +43,20 @@ const ArtistCard = ({ artist }) => {
     fetchArtistTopTracks();
   };
 
+  const conditionalBorder = !darkMode ? "2px solid #fff" : "2px solid grey"
+
   return (
     <ArtistCardContainer
-      border={!darkMode ? "2px solid #fff" : "2px solid grey"}
+      border={conditionalBorder}
     >
       <ArtistImageContainer>
         <ArtistCardImage src={artist.image[2]["#text"]} alt="" />
       </ArtistImageContainer>
-      <ArtistTitleContainer>
+      <ArtistDetailsContainer>
         <h3>Artist</h3>
         <hr />
         <ArtistNameParagraph>{artist.name}</ArtistNameParagraph>
-      </ArtistTitleContainer>
+      </ArtistDetailsContainer>
       <ArtistDetailsContainer>
         <p>
           <ArtistDetailsSpan>Listeners: </ArtistDetailsSpan>
