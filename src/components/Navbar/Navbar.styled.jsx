@@ -9,7 +9,7 @@ export const NavbarContainer = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: ${(props) => props.bg};
+  background-color: ${(props) => props.color};
   color: #fff;
   flex-wrap: wrap;
   height: 5rem;

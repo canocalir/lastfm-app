@@ -21,7 +21,6 @@ import {
 import PropTypes from "prop-types";
 
 const ArtistCard = ({ artist }) => {
-
   const dispatch = useDispatch();
   const { darkMode } = useSelector(selectTheme);
 
@@ -45,13 +44,13 @@ const ArtistCard = ({ artist }) => {
     fetchArtistTopAlbums();
     fetchArtistTopTracks();
   };
- 
+
   const conditionalBorder = !darkMode ? "2px solid #fff" : "2px solid grey";
 
   return (
     <ArtistCardContainer border={conditionalBorder}>
       <ArtistImageContainer>
-        <ArtistCardImage src={artist?.image[2]["#text"]} alt="" />
+        <ArtistCardImage src={artist?.image[0]?.["#text"]} alt="" />
       </ArtistImageContainer>
       <ArtistDetailsContainer>
         <h3>Artist</h3>
@@ -94,7 +93,18 @@ ArtistCard.propTypes = {
       })
     ),
   }),
-  fetchArtistTopAlbums: PropTypes.func,
-  fetchArtistTopTracks: PropTypes.func,
-  detailsFetchHandler: PropTypes.func
+};
+
+ArtistCard.defaultProps = {
+  artist: {
+    name: "Behemoth",
+    listeners: "122342344",
+    playcount: "3213471912",
+    image: [
+      {
+        "#text":
+          "https://upload.wikimedia.org/wikipedia/en/2/29/Behemoth_-_Evangelion.jpg",
+      },
+    ],
+  },
 };

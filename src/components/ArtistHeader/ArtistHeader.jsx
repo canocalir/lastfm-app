@@ -15,10 +15,9 @@ import {
 import PropTypes from "prop-types";
 
 const ArtistHeader = ({ artist }) => {
-  
   const { darkMode } = useSelector(selectTheme);
   const navigate = useNavigate();
-  
+
   return (
     <ArtistHeaderContainer
       border={!darkMode ? "2px solid #fff" : "2px solid grey"}
