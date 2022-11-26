@@ -5,4 +5,4 @@ export default {
     component: ScrollButton
 }
 
-export const BackToTopButton = () => <ScrollButton />
+export const BackToTopButton = ({show}) => <ScrollButton show={show}/>

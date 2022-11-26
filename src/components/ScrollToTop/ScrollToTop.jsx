@@ -8,7 +8,7 @@ import { ScrollToTopButton } from "./ScrollToTop.styled";
 
 import PropTypes from 'prop-types'
 
-const ScrollButton = () => {
+const ScrollButton = ({ show }) => {
   const [visible, setVisible] = useState(false);
 
   const toggleVisible = () => {
@@ -33,7 +33,7 @@ const ScrollButton = () => {
     <ScrollToTopButton>
       <FaArrowCircleUp
         onClick={scrollToTop}
-        style={{ display: visible ? "inline" : "none" }}
+        style={{ display: visible || show ? "inline" : "none" }}
       />
     </ScrollToTopButton>
   );
@@ -42,8 +42,11 @@ const ScrollButton = () => {
 //Prop Types
 
 ScrollButton.propTypes = {
-  toggleVisible: PropTypes.func,
-  scrollToTop: PropTypes.func
+  show: PropTypes.bool
 };
+
+ScrollButton.defaultProps = {
+  show: false 
+}
 
 export default ScrollButton;
