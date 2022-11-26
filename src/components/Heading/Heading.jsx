@@ -13,3 +13,7 @@ export default Heading;
 Heading.propTypes = {
   title: PropTypes.string,
 };
+
+Heading.defaultProps = {
+  title: 'LastFM App Home Page'
+}
