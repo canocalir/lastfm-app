@@ -1,4 +1,3 @@
-import { storiesOf } from "@storybook/react";
 import {
   ArtistDetailsCard,
   CounterText,
@@ -14,24 +13,28 @@ const album = {
   },
 };
 
-storiesOf("Styled Components", module).add("Artist Details Card", () => (
-  <ArtistDetailsCard style={{ width: "50%" }}>
-    <ImageAndNamesContainer>
-      <DetailsImageSquare
-        src={
-          "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png"
-        }
-        alt="albumImage"
-      />
-      <div>
-        <h4>{album.name === "(null)" ? "No Album Data" : album.name}</h4>
-        <p>{album?.artist?.name}</p>
-      </div>
-      <PlayCountContainer>
-        <CounterText>
-          {album?.artist?.playcount} <span>plays</span>
-        </CounterText>
-      </PlayCountContainer>
-    </ImageAndNamesContainer>
-  </ArtistDetailsCard>
-));
+export default {
+  title: 'Styled Components',
+  component: ArtistDetailsCard
+}
+
+export const CardArtistDetails = () => <ArtistDetailsCard style={{ width: "50%" }}>
+<ImageAndNamesContainer>
+  <DetailsImageSquare
+    src={
+      "https://lastfm.freetls.fastly.net/i/u/174s/2a96cbd8b46e442fc41c2b86b821562f.png"
+    }
+    alt="albumImage"
+  />
+  <div>
+    <h4>{album.name === "(null)" ? "No Album Data" : album.name}</h4>
+    <p>{album?.artist?.name}</p>
+  </div>
+  <PlayCountContainer>
+    <CounterText>
+      {album?.artist?.playcount} <span>plays</span>
+    </CounterText>
+  </PlayCountContainer>
+</ImageAndNamesContainer>
+</ArtistDetailsCard>
+
