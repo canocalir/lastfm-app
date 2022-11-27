@@ -5,4 +5,4 @@ export default {
     component: ArtistHeader
 }
 
-export const HeaderMain = () => <ArtistHeader/>
+export const HeaderMain = () => <ArtistHeader />

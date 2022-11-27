@@ -20,7 +20,7 @@ import {
 //PropTypes
 import PropTypes from "prop-types";
 
-const ArtistCard = ({ artist }) => {
+const ArtistCard = ({ artist, title }) => {
   const dispatch = useDispatch();
   const { darkMode } = useSelector(selectTheme);
 
@@ -69,7 +69,7 @@ const ArtistCard = ({ artist }) => {
       </ArtistDetailsContainer>
       <Link to={`/artist/${artist?.name}`} state={{ data: artist }}>
         <ArtistDetailsButton name="detailsbutton" onClick={detailsFetchHandler}>
-          Click For Artist Details
+          {title}
         </ArtistDetailsButton>
       </Link>
     </ArtistCardContainer>
@@ -81,6 +81,7 @@ export default ArtistCard;
 //Prop Types
 
 ArtistCard.propTypes = {
+  title: PropTypes.string,
   artist: PropTypes.shape({
     name: PropTypes.string.isRequired,
     listeners: PropTypes.string,
@@ -96,6 +97,7 @@ ArtistCard.propTypes = {
 };
 
 ArtistCard.defaultProps = {
+  title: 'Click For Artist Details',
   artist: {
     name: "Behemoth",
     listeners: "122342344",
