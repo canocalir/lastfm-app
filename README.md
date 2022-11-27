@@ -40,6 +40,9 @@ yarn storybook
 ## Usage
 
 #### In the Storybook, you will find those isolated components:
+
+![storylast](https://user-images.githubusercontent.com/11324886/204116124-04e85a32-5306-406e-8f68-c035240a6f5b.png)
+
 * There were no actions and controls written as default except the Navbar component which is interactive and to show [backToTop](#) button, you need to give a boolean value.
 
 #### App's Usage
