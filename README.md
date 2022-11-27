@@ -74,6 +74,7 @@ yarn storybook
 * For styling purposes, I choosed Styled Components over SASS and module CSS/SASS because of its dynamic structure and its tracking ability of which components are rendered or not then inject only their styles to the page.  
 * In album details page, for the purposes of Redux data persistance I used Localstorage.
 * You can change between dark mode and light mode. It's state hold on themeSlice with Redux.
+* Artist Details Card is a Styled Component which is used for either top albums and top tracks data. Artist Details Tab component is just a left pane, right pane structure for the mapped Artist Details Cards.
 
 ---
 #### Test Cases
