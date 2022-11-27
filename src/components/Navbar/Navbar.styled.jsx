@@ -21,6 +21,9 @@ export const NavbarHeading = styled.h1`
   text-transform: uppercase;
   color: #d00000;
   margin-left: 2rem;
+  @media(max-width: 768px){
+    font-size: 1rem;
+  }
 `;
 
 export const NavbarSocialIcons = styled.div`

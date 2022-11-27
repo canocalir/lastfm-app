@@ -23,6 +23,8 @@ export const ArtistLogoContainer = styled.div`
   @media (max-width: 768px) {
     flex-direction: column;
     justify-content: center;
+    align-items: flex-start;
+    gap: 0rem;
   }
 `;
 
@@ -46,5 +48,8 @@ export const BackToHomeButton = styled.button`
     color: #000;
     cursor: pointer;
     transition: ease-in 200ms;
+  }
+  @media(max-width: 768px){
+    width: 80%;
   }
 `;
