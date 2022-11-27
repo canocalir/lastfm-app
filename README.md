@@ -4,6 +4,8 @@ React-Redux Last FM App is an artist showcase powered by the official LastFM API
 
 The App contains lists of Last FM's Top Artists and their details pages contain Top Tracks and Top Albums.
 
+![lastfm](https://user-images.githubusercontent.com/11324886/204116073-e0f64ee2-5671-41e4-8a1d-a8140038eec6.gif)
+
 ## Tech Stack
 * React
 * React-Redux
