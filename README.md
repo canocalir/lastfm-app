@@ -23,6 +23,14 @@ Use the Yarn package manager install command.
 yarn
 ```
 ---
+
+Create a [.env](#) file in the project root and fill the following keys with your values.
+```bash
+REACT_APP_LASTFM_API_KEY=YOURVALUE
+REACT_APP_LASTFM_BASE_URL=YOURVALUE
+```
+
+---
 For starting the project run the Yarn's start command.
 
 ```bash
