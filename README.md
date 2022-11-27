@@ -45,6 +45,8 @@ yarn storybook
 
 * There were no actions and controls written as default except the Navbar component which is interactive and to show [backToTop](#) button, you need to give a boolean value.
 
+---
+
 #### App's Usage
 * LastFM React Redux App is a great example of clean UI and UX design. You will be introduced to a front page containing top artists of LastFM. 
 * While you are scrolling to the bottom, you will be aware of there is an infinite scroll mechanism working for loading brand-new artists. You can go back to the top with the Back to Top button on the right.
