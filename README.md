@@ -37,9 +37,11 @@ yarn storybook
 ```
 * Storybook will go live on port number 6006 as default.
 
+## Project Structure
+
 ## Usage
 
-#### StoryBook
+#### StoryBook Navigation
 * In the Storybook, you will find those isolated components:
 
 ![storylast](https://user-images.githubusercontent.com/11324886/204116124-04e85a32-5306-406e-8f68-c035240a6f5b.png)
