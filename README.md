@@ -74,7 +74,10 @@ yarn storybook
 
 ---
 #### Test Cases
-* There were some test cases coded for testing fetch top artists function and for testing render of some components. In the end, it should be better of course that these cases are not succesfully covered 100% of the app, but it was a good practice for showcasing react testing library functionalities.  
+* There were some test cases coded for testing fetch top artists function and for testing render of some components. In the end, it should be better of course that these cases are not succesfully covered 100% of the app, but it was a good practice for showcasing react testing library functionalities.
+
+#### Type Checking
+* Type checking controlled by the React Prop Types.
 
 ---
 ## License
