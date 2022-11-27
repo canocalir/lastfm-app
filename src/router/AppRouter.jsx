@@ -15,8 +15,10 @@ import { darkTheme, GlobalStyles, lightTheme } from "../styles/theme";
 
 const AppRouter = () => {
   const { darkMode } = useSelector(selectTheme);
+  const conditionalTheme = !darkMode ? darkTheme : lightTheme
+  
   return (
-    <ThemeProvider theme={!darkMode ? darkTheme : lightTheme}>
+    <ThemeProvider theme={conditionalTheme}>
       <GlobalStyles />
       <BrowserRouter>
         <Routes>

@@ -1,9 +1,10 @@
-.loading {
-    margin: auto;
-    width: 8rem;
-    height: 8rem;
-  }
-  .loading:after {
+import styled from "styled-components";
+
+export const LoadingIcon = styled.div`
+  margin: auto;
+  width: 8rem;
+  height: 8rem;
+  &:after {
     content: " ";
     display: block;
     width: 5rem;
@@ -22,3 +23,4 @@
       transform: rotate(360deg);
     }
   }
+`;

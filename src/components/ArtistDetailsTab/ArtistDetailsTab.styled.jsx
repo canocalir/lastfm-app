@@ -21,6 +21,9 @@ export const ArtistDetailsCard = styled.div`
     gap:1rem;
    }
 `
+export const ArtistDetailsMidContainer = styled.div`
+    width: 15rem;
+`
 
 export const ImageAndNamesContainer = styled.div`
     display: flex;

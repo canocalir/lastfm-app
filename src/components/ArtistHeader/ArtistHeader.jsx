@@ -18,10 +18,10 @@ const ArtistHeader = ({ artist }) => {
   const { darkMode } = useSelector(selectTheme);
   const navigate = useNavigate();
 
+  const conditionalBorder = !darkMode ? "2px solid #fff" : "2px solid grey";
+
   return (
-    <ArtistHeaderContainer
-      border={!darkMode ? "2px solid #fff" : "2px solid grey"}
-    >
+    <ArtistHeaderContainer border={conditionalBorder}>
       <ArtistHeaderImage
         src={artist?.data?.image[2]["#text"]}
         alt="artistHeaderLogo"
@@ -58,24 +58,22 @@ ArtistHeader.propTypes = {
 
 ArtistHeader.defaultProps = {
   artist: {
-    data:{
-    name: "Behemoth",
-    listeners: "122342344",
-    playcount: "3213471912",
-    image: [
-      {
-        "#text":
-          "",
-      },
-      {
-        "#text":
-          "",
-      },
-      {
-        "#text":
-          "https://upload.wikimedia.org/wikipedia/en/2/29/Behemoth_-_Evangelion.jpg",
-      }
-    ],
+    data: {
+      name: "Behemoth",
+      listeners: "122342344",
+      playcount: "3213471912",
+      image: [
+        {
+          "#text": "",
+        },
+        {
+          "#text": "",
+        },
+        {
+          "#text":
+            "https://upload.wikimedia.org/wikipedia/en/2/29/Behemoth_-_Evangelion.jpg",
+        },
+      ],
+    },
   },
-}
 };

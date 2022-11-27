@@ -24,25 +24,26 @@ const ArtistCard = ({ artist, title }) => {
   const dispatch = useDispatch();
   const { darkMode } = useSelector(selectTheme);
 
-  const fetchArtistTopAlbums = async () => {
-    const url = `${process.env.REACT_APP_LASTFM_BASE_URL}/?method=artist.gettopalbums&artist=${artist?.name}&api_key=${process.env.REACT_APP_LASTFM_API_KEY}&format=json`;
-    const res = await fetch(url);
-    const data = await res.json();
-    dispatch(setAlbumsData(data));
-    localStorage.setItem("albumdetails", JSON.stringify(data));
+  const urlSelector = (condition) => {
+    const url = `${process.env.REACT_APP_LASTFM_BASE_URL}/?method=artist.${
+      condition === "albums" ? "gettopalbums" : "gettoptracks"
+    }&artist=${artist?.name}&api_key=${
+      process.env.REACT_APP_LASTFM_API_KEY
+    }&format=json`;
+    return url
   };
 
-  const fetchArtistTopTracks = async () => {
-    const url = `${process.env.REACT_APP_LASTFM_BASE_URL}/?method=artist.gettoptracks&artist=${artist?.name}&api_key=${process.env.REACT_APP_LASTFM_API_KEY}&format=json`;
-    const res = await fetch(url);
-    const data = await res.json();
-    dispatch(setTracksData(data));
-    localStorage.setItem("trackdetails", JSON.stringify(data));
-  };
-
-  const detailsFetchHandler = () => {
-    fetchArtistTopAlbums();
-    fetchArtistTopTracks();
+  const detailsFetchHandler = async () => {
+    const urlAlbums = urlSelector("albums");
+    const urlTracks = urlSelector("tracks");
+    const resAlbums = await fetch(urlAlbums);
+    const resTracks = await fetch(urlTracks);
+    const dataAlbums = await resAlbums.json();
+    const dataTracks = await resTracks.json();
+    dispatch(setAlbumsData(dataAlbums));
+    localStorage.setItem("albumdetails", JSON.stringify(dataAlbums));
+    dispatch(setTracksData(dataTracks));
+    localStorage.setItem("trackdetails", JSON.stringify(dataTracks));
   };
 
   const conditionalBorder = !darkMode ? "2px solid #fff" : "2px solid grey";
@@ -97,7 +98,7 @@ ArtistCard.propTypes = {
 };
 
 ArtistCard.defaultProps = {
-  title: 'Click For Artist Details',
+  title: "Click For Artist Details",
   artist: {
     name: "Behemoth",
     listeners: "122342344",

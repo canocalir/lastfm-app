@@ -1,8 +1,8 @@
-import style from './LoadingIndicator.module.css'
+import { LoadingIcon } from './LoadingIndicator.styled'
 
 const LoadingIndicator = () => {
   return (
-    <div className={style.loading}></div>
+    <LoadingIcon />
   )
 }
 

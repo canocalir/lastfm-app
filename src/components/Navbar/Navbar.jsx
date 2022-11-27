@@ -23,6 +23,25 @@ const Navbar = ({ color, iconcolor }) => {
   const conditionalColorNavbar = darkMode ? "#121620" : "#f1f1f1";
   const conditionalColorIcon = !darkMode ? "#121620" : "#f1f1f1";
 
+  const githubLink = "https://github.com/canocalir";
+  const linkedinLink = "https://linkedin.com/in/canberkocalir";
+
+  const darkModeConditionalRender = !darkMode ? (
+    <LightModeLogo
+      style={{ color: iconcolor }}
+      data-testid="light"
+      color={conditionalColorIcon}
+      onClick={() => dispatch(toggleTheme())}
+    />
+  ) : (
+    <DarkModeLogo
+      style={{ color: iconcolor }}
+      data-testid="night"
+      color={conditionalColorIcon}
+      onClick={() => dispatch(toggleTheme())}
+    />
+  );
+
   return (
     <NavbarContainer
       data-testid="navbar"
@@ -33,33 +52,19 @@ const Navbar = ({ color, iconcolor }) => {
         <NavbarHeading>LastFM APP</NavbarHeading>
       </a>
       <NavbarSocialIcons>
-        <NavLinkElement href="https://github.com/canocalir">
+        <NavLinkElement href={githubLink}>
           <GithubLogo
             style={{ color: iconcolor }}
             color={conditionalColorIcon}
           />
         </NavLinkElement>
-        <NavLinkElement href="https://linkedin.com/in/canberkocalir">
+        <NavLinkElement href={linkedinLink}>
           <LinkedinLogo
             style={{ color: iconcolor }}
             color={conditionalColorIcon}
           />
         </NavLinkElement>
-        {!darkMode ? (
-          <LightModeLogo
-            style={{ color: iconcolor }}
-            data-testid="light"
-            color={conditionalColorIcon}
-            onClick={() => dispatch(toggleTheme())}
-          />
-        ) : (
-          <DarkModeLogo
-            style={{ color: iconcolor }}
-            data-testid="night"
-            color={conditionalColorIcon}
-            onClick={() => dispatch(toggleTheme())}
-          />
-        )}
+        {darkModeConditionalRender}
       </NavbarSocialIcons>
     </NavbarContainer>
   );
@@ -69,12 +74,12 @@ const Navbar = ({ color, iconcolor }) => {
 
 Navbar.propTypes = {
   color: PropTypes.string,
-  iconcolor: PropTypes.string
+  iconcolor: PropTypes.string,
 };
 
 Navbar.defaultProps = {
   color: "#f1f1f1 || #121620",
-  iconcolor: "#f1f1f1 || #121620"
+  iconcolor: "#f1f1f1 || #121620",
 };
 
 export default Navbar;

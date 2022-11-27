@@ -11,6 +11,7 @@ import {
   ImageAndNamesContainer,
   PlayCountContainer,
   CounterText,
+  ArtistDetailsMidContainer,
 } from "./ArtistDetailsTab.styled";
 
 //PropTypes
@@ -40,12 +41,12 @@ const ArtistDetailsTab = ({ heading, data }) => {
                 }
                 alt="albumImage"
               />
-              <div>
+              <ArtistDetailsMidContainer>
                 <h4>
                   {album?.name === "(null)" ? "No Album Data" : album?.name}
                 </h4>
                 <p>{album?.artist?.name}</p>
-              </div>
+              </ArtistDetailsMidContainer>
               <PlayCountContainer>
                 <CounterText>
                   {album?.playcount} <span>plays</span>
@@ -70,12 +71,12 @@ const ArtistDetailsTab = ({ heading, data }) => {
                 }
                 alt="trackImage"
               />
-              <div>
+              <ArtistDetailsMidContainer>
                 <h4>
                   {track?.name === "(null)" ? "No Track Data" : track?.name}
                 </h4>
                 <p>{track?.artist?.name}</p>
-              </div>
+              </ArtistDetailsMidContainer>
               <PlayCountContainer>
                 <CounterText>
                   {track?.listeners} <span>listeners</span>
