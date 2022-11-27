@@ -23,7 +23,10 @@ Use the Yarn package manager install command.
 yarn
 ```
 ---
-
+You must get an API key by creating LastFM account first.
+```bash
+https://www.last.fm/api/account/create
+```
 Create a [.env](#) file in the project root and fill the following keys with your values.
 ```bash
 REACT_APP_LASTFM_API_KEY=YOURVALUE
