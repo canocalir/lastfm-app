@@ -37,7 +37,13 @@ yarn storybook
 ```
 * Storybook will go live on port number 6006 as default.
 
+---
+
 ## Project Structure
+
+![laststructure](https://user-images.githubusercontent.com/11324886/204117054-b6e21ca9-f977-48f3-b24e-8ef448faac6a.png)
+
+---
 
 ## Usage
 
